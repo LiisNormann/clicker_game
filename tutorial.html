@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>Tutorial: Clickbait</title>
+    <style>
+        body {
+            background: rosybrown;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+<h1>Clickbait mängu loomine</h1>
+<div class="container">
+    <div class="jumbotron">
+        <p>Käesoleva ülesande raames valmib ‘Clickbait’ mäng kahe erineva raskusastmega. Ülesande eesmärk on astuda
+            välja oma mugavustsoonist ja ületada mägesid Javascripti kirjutades. Võid esmalt proovida ülesannet
+            iseseisvalt lahendama hakata aga ära muretse, antud juhendis on kirjeldatud kõik vajalikud sammud
+            lõpptulemuse saavutamiseks.</p>
+        <h5>HTML dokumendi loomine</h5>
+        <p>Pane esmalt paika HTML faili struktuur. Kuna mäng ise on kirjutatud javascriptiga siis meie HTML fail
+            sisaldab ainult järgmist: </p>
+        <ol>
+            <li>Mängu pealkiri</li>
+            <li>Mängu lühikirjeldus</li>
+            <li>Punktisumma kirjeldus</li>
+            <li>Kaks nuppu raskusastme valimiseks</li>
+            <li>Mänguala</li>
+        </ol>
+        <p>Mänguala loomisel kasuta &lt;canvas&gt; märgendit. Anna sellele id ning määra kõrgus ja laius (800x800).
+            Soovi korral võid ka mänguala suuruseid muuta, kuid siis pead arvestama ka sellega, et mõned Javascripti
+            funktsioonid nõuavad ümberarvutamist.</p>
+        <h6>Alustuseks peaks HTML fail välja nägema selline:</h6>
+        <img src="img/html.png">
+        <br>
+        <br>
+        <h5>Javascripti kirjutamine</h5>
+        <h6>Algmuutujate määramine</h6>
+        <p>Enne kui me mängufunktsioone looma hakkame, paneme paika mängu muutujad mida koodi käigus muudetakse.</p>
+        <ol>
+            <li>Mänguala ja hiireklõpsu x/y koordinaadid</li>
+            <li>Palli algraadius</li>
+            <li>Mängu esmase esilekutsumise aeg</li>
+            <li>Mänguala ehk canvas</li>
+            <li>Punktisumma</li>
+            <li>Juhusliku värvi valem</li>
+            <li>Ajavahemik (palli hüpete jaoks)</li>
+            <li>Mängu algne raskusaste (algselt kerge)</li>
+            <img src="img/muutujad.png">
+        </ol>
+        <h6>Mängu käivitamine</h6>
+        <p>Javascripti jaoks tuleb luua eraldi fail ja see kindlasti HTML-iga ühendada!</p>
+        <p>Selleks, et mängu käivitada tuleb luua funktsioon mänguala Id kaudu. Paneme funktsiooni nimeks 'initialize'. See funktsiooni käivitamine tuleb lisada &lt;body&gt; märgendi sisse järgmiselt: &lt;body class="game" onload="initialize();"&gt;. </p>
+        <img src="img/initialize.png">
+        <br>
+        <br>
+        <h6>Palli joonistamine</h6>
+        <p>Selleks, et palli joonistada kasutame meie poolt paika pandud mänguala peal 'draw' funktsiooni. Mänguala tausta värvime ära (värvi võid valida ise). Tähtis on see, et palli keskpunkt asuks mänguala keskel, selle jaoks tuleb paika panna palli x ja y koordinaadid kus jagatakse mänguala laius ja kõrgus kahega. </p>
+        <img src="img/draw.png">
+        <br>
+        <br>
+        <p>Nüüd määrame ka palli parameetrid. Selleks kasutame üleval paika pandud x ja y koordinaate. Määrame ära ka palli värvi, mille jaoks kasutame alati juhuslikult valitud värvi. Kindlasti tuleb määrata see, et kui palli ei ole siis joonistatakse uus pall.</p>
+        <img src="img/pall.png">
+        <br>
+        <br>
+        <p>Määrame ära ka punktisumma välimuse ja valemi.</p>
+        <img src="img/score.png"
+        <br>
+        <br>
+        <br>
+        <h6>Tegevused hiireklõpsu tagajärjel</h6>
+        <p>Mängu eesmärk on see, et kui mängija vajutab pallile siis tekib uus pall (ehk joonistatakse uus pall). Selleks tuleb määrata muutuja mis kontrollib kas hiireklõps toimus, muutuja mis kontrollib kas hiireklõps tehti palli sees ja kui mõlemad vastavad tõele siis tuleb joonistada uus pall.</p>
+        <img src="img/click.png">
+        <br>
+        <br>
+        <h6>Punktisumma, palli värvi, asukoha ja suuruse muutmine</h6>
+        <p>Nüüd määrame mis juhtub palliga siis kui selle peale klõpsatakse. Järgmisena tahame me muuta palli värvi, asukohta ja suurust iga kord kui sinna peale vajutatakse. Selleks tuleb anda x, y, r ja värvi muutujatele uued JUHUSLIKUD väärtused (Math.random kasutades).</p>
+        <p>Kindlasti tuleb ka määrata see, et pall ei saaks mängualast välja minna. Muidu võib juhtuda see, et korraga on pall ekraanilt kadunud ja edasi mängida ei saa.</p>
+        <p>Lisame ka selle, et iga kord kui pallile klõpsatakse siis suureneb punktisumma</p>
+        <img src="img/changes.png">
+        <br>
+        <br>
+        <h6>Challenge mode</h6>
+        <p>Kõik eelnevalt kirjutatud kood käib mängu algse raskusastme kohta. Nüüd tuleks ka määrata mis juhtub kui valida mängu teine raskusaste.</p>
+        <p>Panime eelnevalt paika, et mis juhtub siis kui pallile klõpsatakse. Nüüd tahame sellele lisaks veel teha nii, et kui palli teatud ajavahemiku jooksul ei klõpsata siis muudab ka pall asukohta, värvi ja suurust. Selleks tuleb kontrollida, et kas Challenge mode on sisse lülitatud ja kuna toimus viimane hiireklõps pallil. Meie määrasime eelnevalt ajavahemikuks 0.5s ja nüüd ütleme et kui palli 0.5s jooksul ei klõpsata siis joonistatake uus pall (eelnevalt paika pandud muutujatega).</p>
+        <img src="img/challengedraw.png">
+        <br>
+        <br>
+        <h6>Raskusastme vahetamine</h6>
+        <p>Juhhei! Me oleme paika pannud kõik mängu toimimiseks vajalikud asjad. Viimasena tuleks luua viis raskusastme muutmiseks</p>
+        <p>Selleks kasutame HTML failis loodud nuppu. Javascriptiga tuleks kirjutada kood mis esmalt kontrollib, et mis astmes mäng on ja kohandab vastavalt sellele nuppu funktsiooni. Tuleks teha nii, et kui mäng on Chicken mode-s siis nupul on kiri 'Challenge mode' ja vastupidi. Nupule vajutades peab muutuma raskusaste, taaskäivitatakse aeg ja nullitakse punktisumma.</p>
+        <p>Ära unusta funktsiooni ka HTML failiga ühendada (onclick event)!</p>
+        <img src="img/nupp.png">
+        <br>
+        <br>
+        <h6>Lõplik HTML ja CSS</h6>
+        <p>Mängu värvid ja kujundus jäävad sinu enda valida. Näitemängus on kujundatud ainult veebilehe taustavärv ja mänguala piirjoon. CSS-i jaoks tuleks luua uus fail ja see HTML-iga ühendada!</p>
+        <img src="img/final1.png"> <img src="img/final2.png">
+    </div>
+</div>
+</body>
+</html>
